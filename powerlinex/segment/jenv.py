@@ -14,14 +14,14 @@ def readlines(cmd, cwd):
 @requires_segment_info
 def version(pl, segment_info):
     try:
-        for line in readlines(["plenv", "version"], segment_info['getcwd']()):
+        for line in readlines(["jenv", "version"], segment_info['getcwd']()):
             # Now to process line
             if line[-9:-1] == "/version":
                 return None
             else:
                 return [{
                     'contents': line.split(" ")[0],
-                    'highlight_groups': ['perl_version', 'virtualenv']
+                    'highlight_groups': ['jenv_version', 'virtualenv']
                 }]
     except OSError as e:
         if e.errno == 2:
